@@ -31,18 +31,30 @@ logger.addHandler(ch)
 
 logger.info("Consumer application started!")
 
+def get_value(endpoint):
+    logger.info("Calling " + endpoint)
+    response = requests.get(endpoint) 
+    if (response.status_code == 200):
+       logger.info("Name: " + str(response.status_code) + " " + response.text)
+    elif (response.status_code == 404):
+        logger.error(endpoint + " returns 404")
+    else:
+       logger.warn("Name: " + str(response.status_code) + " " + response.text)
+
 # Set up loop to keep making calls
 runLoop = True
 counter = 1
 while runLoop: 
     # determine which call to make
-    thingToTry = random.randrange(0,100)
+    thingToTry = random.randrange(0,200)
     if thingToTry <50:
-        response = requests.get("http://localhost:8080/name")
-        print("Name: " + str(response.status_code) + " " + response.text)
+        get_value("http://localhost:8080/name")
     elif thingToTry >50 and thingToTry <= 100:
-        response = requests.get("http://localhost:8080/word")
-        print("Word: " + str(response.status_code) + " " + response.text)
+        get_value("http://localhost:8080/word")
+    elif thingToTry > 100 and thingToTry <= 150:
+        get_value("http://localhost:8080/sentence")
+    else:
+        get_value("http://localhost:8080/paragraph")
 
     # sleep for a small amount of time
     # sleepSeconds = random.randrange(0,5)
