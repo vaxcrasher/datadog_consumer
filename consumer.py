@@ -4,6 +4,10 @@ import random
 import logging
 import os
 
+# Set up which server to call
+# url = "http://localhost:8080/"
+url = "http://100.21.163.215/"
+
 # Logging setup
 scriptPath = os.path.realpath(__file__)
 logFile = os.path.dirname(scriptPath) + "/logs/consumer.log"
@@ -48,15 +52,15 @@ while runLoop:
     # determine which call to make
     thingToTry = random.randrange(0,210)
     if thingToTry <50:
-        get_value("http://100.21.163.215/name")
+        get_value(url + "name")
     elif thingToTry >50 and thingToTry <= 100:
-        get_value("http://100.21.163.215/word")
+        get_value(url + "word")
     elif thingToTry > 100 and thingToTry <= 150:
-        get_value("http://100.21.163.215/sentence")
+        get_value(url + "sentence")
     elif thingToTry > 150 and thingToTry <= 200:
-        get_value("http://100.21.163.215/paragraph")
+        get_value(url + "paragraph")
     else: 
-        get_value("http://100.21.163.215/badendpoint")
+        get_value(url + "badendpoint")
 
     # sleep for a small amount of time 5% of the time
     sleepTrigger = random.randrange(1,100)
