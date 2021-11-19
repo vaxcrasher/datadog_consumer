@@ -48,15 +48,15 @@ while runLoop:
     # determine which call to make
     thingToTry = random.randrange(0,210)
     if thingToTry <50:
-        get_value("http://localhost:8080/name")
+        get_value("http://100.21.163.215/name")
     elif thingToTry >50 and thingToTry <= 100:
-        get_value("http://localhost:8080/word")
+        get_value("http://100.21.163.215/word")
     elif thingToTry > 100 and thingToTry <= 150:
-        get_value("http://localhost:8080/sentence")
+        get_value("http://100.21.163.215/sentence")
     elif thingToTry > 150 and thingToTry <= 200:
-        get_value("http://localhost:8080/paragraph")
+        get_value("http://100.21.163.215/paragraph")
     else: 
-        get_value("http://localhost:8080/badendpoint")
+        get_value("http://100.21.163.215/badendpoint")
 
     # sleep for a small amount of time 5% of the time
     sleepTrigger = random.randrange(1,100)
